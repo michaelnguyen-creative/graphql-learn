@@ -16,9 +16,10 @@ const startApolloServer = async () => {
   // Generate a mock schema with mock resolvers
   const schemaWithMocks = addMocksToSchema({
     schema: makeExecutableSchema({ typeDefs }),
+    mocks
   });
   // create a new ApolloServer instance, passing in the typeDefs & resolvers
-  const server = new ApolloServer({ schema: schemaWithMocks, mocks });
+  const server = new ApolloServer({ schema: schemaWithMocks });
   // start standalone server
   const { url } = await startStandaloneServer(server);
   // log the server url
